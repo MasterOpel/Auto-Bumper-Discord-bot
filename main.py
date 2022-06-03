@@ -12,7 +12,7 @@ started = False
 token = input("Type your token here: ")
 client = discord.Client()
 channel = None;
-thread = threading.Thread(auto_bump, daemon=True, group=None)
+thread = threading.Thread(target=auto_bump, daemon=True)
     
 def on_start():
   global started
