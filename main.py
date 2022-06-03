@@ -2,18 +2,17 @@ import discord
 import time
 import threading
 
-def auto_bump():
+async def auto_bump():
   global channel
   while True:
-    channel.send('/bump')
+    await channel.send('/bump')
     time.sleep(1800)
     
 started = False
 token = input("Type your token here: ")
 client = discord.Client()
-channel = None;
 thread = threading.Thread(target=auto_bump, daemon=True)
-    
+  
 def on_start():
   global started, thread
   thread.start()
@@ -36,8 +35,8 @@ async def on_message(message):
   global started
   if message.content.startswith('$start') and not started:
     global channel
-    on_start()
     channel = message.channel
+    on_start()
     await message.channel.send('The auto-bump operation was successfully started!')
 
   if message.content.startswith('$stop') and started:
