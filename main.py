@@ -1,6 +1,6 @@
 import discord
 
-token = input("Type the token here: ")
+token = input("Type your token here: ")
 
 @client.event
 async def on_ready():
