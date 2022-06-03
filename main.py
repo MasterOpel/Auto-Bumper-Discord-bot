@@ -15,13 +15,13 @@ channel = None;
 thread = threading.Thread(target=auto_bump, daemon=True)
     
 def on_start():
-  global started
+  global started, thread
   thread.start()
   started = True
 
 def on_stop():
-  global started
-  thread.stop()
+  global started, thread
+  thread._stop()
   started = False
   
 @client.event
