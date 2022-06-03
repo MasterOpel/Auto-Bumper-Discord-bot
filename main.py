@@ -25,9 +25,8 @@ def on_stop():
   started = False
   
 @client.event
-async def on_ready(self):
+async def on_ready():
   print('The bot initialized successfully!')
-  print(f'Logged in as {self.user} (ID: {self.id})')
 
 @client.event
 async def on_message(message):
